@@ -1,7 +1,7 @@
 import csv
 import os
 import base64
-from shortner.constants import DOMAIN, RECORD_NOT_FOUND
+from shortner.constants import DOMAIN, RECORD_NOT_FOUND, SUCCESS, ERROR
 
 fields = ("id", "actual_url", "shorten_url")
 header = "id,actual_url,shorten_url\n"
@@ -29,17 +29,17 @@ class FileDbManager:
                     data = line.split(",")
                     if data[1] == url:
                         return {
-                            "result": True,
+                            "status": SUCCESS,
                             "data": {
                                 "id": data[0],
                                 "actual_url": data[1],
-                                "shorten_url": data[2],
+                                "shorten_url": data[2].strip(),
                             },
                         }
-                return {"result": False, "message": RECORD_NOT_FOUND, "last": count}
+                return {"status": ERROR, "message": RECORD_NOT_FOUND, "last": count}
         except FileNotFoundError:
             FileDbManager.create_db_file()
-            return {"result": False, "message": RECORD_NOT_FOUND, "last": 1}
+            return {"status": ERROR, "message": RECORD_NOT_FOUND, "last": 1}
 
     @staticmethod
     def add_record(id: int, url: str) -> dict:
@@ -53,4 +53,4 @@ class FileDbManager:
             dictwriter_obj = csv.DictWriter(dbfile, fieldnames=fields)
             dictwriter_obj.writerow(new_row)
             dbfile.close()
-        return new_row
+        return {"status": SUCCESS, "data": new_row}
