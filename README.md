@@ -6,12 +6,8 @@ RUNNING LOCALLY:-
 
 CLONE REPOSITORY
 STEPS:-
-1. create python virtual environment
-    virtualenv venv -p python3
-2. Install Requirements
-    pip install -r requirements.txt
-3. Runserver
-    python manage.py runserver
+1. docker-compose build
+2. docker-compose up
 
 By default server runs on 8000 port
 
