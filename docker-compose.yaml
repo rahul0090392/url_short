@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  web:
+    build: ./urlshortner
+    hostname: shortener
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./urlshortner/:/usr/src/urlshortner/
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+
+    networks:
+      - urlshortner_net
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "10m"
+
+
+networks:
+    urlshortner_net:
+        driver: bridge  
+
+
+volumes:
+  urlshortner_data:
