@@ -4,9 +4,14 @@ from . import views
 
 urlpatterns = [
     path(
-        "shorten_url",
+        "manageurl/shorten_url",
         views.ShortenURLView.as_view(),
         name="shorten_urls",
+    ),
+    path(
+        "manageurl/shorten_url/<str:shorten_path>",
+        views.ShortenURLResolveView.as_view(),
+        name="shorten_url_resolve",
     ),
 ]
 

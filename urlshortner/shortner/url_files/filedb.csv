@@ -1,5 +1,4 @@
-id,actual_url,shorten_url
-1,https://google.com,https://shorten.com/AA==
-2,https://google.com/2,https://shorten.com/AAA=
-3,https://demo.px,https://shorten.com/AAAA
-4,https://demo.px.com,https://shorten.com/AAAAAA==
+id,actual_url
+4494d52b59754107bf6c1e0f6c00cffe,http://shortthis.com/page1
+c76d51316f8941e89290a46603be3816,http://shortthis.com/page2
+a7d3f3cf2a3f409487b4dccc84148466,https://www.facebook.com

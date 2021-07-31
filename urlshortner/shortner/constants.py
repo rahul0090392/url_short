@@ -1,5 +1,5 @@
 RECORD_NOT_FOUND = "Record not found"
-DOMAIN = "https://shorten.com/"
+DOMAIN = "http://localhost:8000/"
 ERROR = "error"
 SUCCESS = "success"
 INTERNAL_ERROR = "Something went wrong"
